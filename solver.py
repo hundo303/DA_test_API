@@ -39,14 +39,17 @@ def ja_to_ar(input_ja: str):
     ar_n = 0
     tmp_n = 0
     for i in range(1, len(input_ja)):
-        if input_ja[i] == '拾':
-            tmp_n += ja_ar_dict[input_ja[i - 1]] * 10
-        elif input_ja[i] == '百':
-            tmp_n += ja_ar_dict[input_ja[i - 1]] * 100
-        elif input_ja[i] == '千':
-            tmp_n += ja_ar_dict[input_ja[i - 1]] * 1000
+        try:
+            if input_ja[i] == '拾':
+                tmp_n += ja_ar_dict[input_ja[i - 1]] * 10
+            elif input_ja[i] == '百':
+                tmp_n += ja_ar_dict[input_ja[i - 1]] * 100
+            elif input_ja[i] == '千':
+                tmp_n += ja_ar_dict[input_ja[i - 1]] * 1000
+        except KeyError:
+            raise KeyError
 
-        elif input_ja[i] == '兆':
+        if input_ja[i] == '兆':
             tmp_n += ja_ar_dict.get(input_ja[i - 1], 0)
             ar_n += tmp_n * 1000000000000
             tmp_n = 0
