@@ -1,7 +1,7 @@
 import queue
 
 
-def ar_to_ja(input_ar: int):
+def ar_to_ja(input_ar: int) -> str:
     ar_ja_dict = {'1': '壱', '2': '弐', '3': '参', '4': '四', '5': '五', '6': '六', '7': '七', '8': '八', '9': '九'}
     q = queue.Queue()
     for digit in ['万', '億', '兆']:
@@ -34,7 +34,7 @@ def ar_to_ja(input_ar: int):
     return ja_str[::-1]
 
 
-def ja_to_ar(input_ja: str):
+def ja_to_ar(input_ja: str) -> int:
     ja_ar_dict = {'壱': 1, '弐': 2, '参': 3, '四': 4, '五': 5, '六': 6, '七': 7, '八': 8, '九': 9}
     ar_n = 0
     tmp_n = 0
